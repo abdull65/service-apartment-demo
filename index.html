@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>StayLuxe Apartments</title>
+    <style>
+      :root {
+        --bg: #f6f3ee;
+        --surface: #ffffff;
+        --surface-alt: #f1ebe3;
+        --text: #1f2937;
+        --muted: #667085;
+        --line: #e7dfd4;
+        --accent: #1f6f5f;
+        --accent-dark: #19584b;
+        --accent-soft: #e7f4f0;
+        --shadow: 0 18px 45px rgba(22, 31, 44, 0.08);
+        --radius-xl: 28px;
+        --radius-lg: 20px;
+        --radius-md: 14px;
+        --max-width: 1180px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .container {
+        width: min(var(--max-width), calc(100% - 2rem));
+        margin: 0 auto;
+      }
+
+      .section {
+        padding: 5.5rem 0;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.45rem 0.85rem;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.7);
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      .section-head {
+        max-width: 680px;
+        margin-bottom: 2.2rem;
+      }
+
+      .section-head h2 {
+        margin: 0.9rem 0 0.75rem;
+        font-size: clamp(2rem, 4vw, 3rem);
+        line-height: 1.1;
+        letter-spacing: -0.03em;
+      }
+
+      .section-head p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 1.05rem;
+      }
+
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 40;
+        backdrop-filter: blur(18px);
+        background: rgba(246, 243, 238, 0.86);
+        border-bottom: 1px solid rgba(231, 223, 212, 0.75);
+      }
+
+      .nav {
+        min-height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 0.85rem;
+        font-weight: 700;
+        letter-spacing: -0.03em;
+      }
+
+      .brand-mark {
+        width: 42px;
+        height: 42px;
+        border-radius: 14px;
+        background: linear-gradient(135deg, var(--accent), #d8b36a);
+        display: grid;
+        place-items: center;
+        color: white;
+        font-size: 1rem;
+        box-shadow: var(--shadow);
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 1.6rem;
+        color: var(--muted);
+        font-size: 0.98rem;
+      }
+
+      .nav-links a:hover {
+        color: var(--text);
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.55rem;
+        padding: 0.95rem 1.35rem;
+        border-radius: 999px;
+        border: 1px solid transparent;
+        font-size: 0.8rem;
+        font-weight: 600;
+        transition: 0.2s ease;
+      }
+
+      .btn:hover {
+        transform: translateY(-1px);
+      }
+
+      .btn-primary {
+        background: var(--accent);
+        color: white;
+        box-shadow: var(--shadow);
+      }
+
+      .btn-primary:hover {
+        background: var(--accent-dark);
+      }
+
+      .btn-secondary {
+        background: white;
+        color: var(--text);
+        border-color: var(--line);
+      }
+
+      .hero {
+        padding: 3.4rem 0 3rem;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.05fr 0.95fr;
+        gap: 2rem;
+        align-items: center;
+      }
+
+      .hero-copy h1 {
+        margin: 1rem 0 1rem;
+        font-size: clamp(2.8rem, 6vw, 5.2rem);
+        line-height: 0.95;
+        letter-spacing: -0.06em;
+        /* max-width: 11ch; */
+      }
+
+      .hero-copy p {
+        max-width: 620px;
+        color: var(--muted);
+        font-size: 1.08rem;
+        margin-bottom: 1.7rem;
+      }
+
+      .hero-actions {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 0.9rem;
+        margin-bottom: 1.8rem;
+      }
+
+      .hero-meta {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1rem;
+        max-width: 560px;
+      }
+
+      .hero-meta .meta-card {
+        background: rgba(255, 255, 255, 0.7);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-md);
+        padding: 1rem;
+      }
+
+      .meta-card strong {
+        display: block;
+        font-size: 1.25rem;
+        margin-bottom: 0.25rem;
+      }
+
+      .meta-card span {
+        color: var(--muted);
+        font-size: 0.94rem;
+      }
+
+      .hero-visual {
+        position: relative;
+        min-height: 640px;
+      }
+
+      .hero-card-main,
+      .hero-card-small,
+      .hero-floating {
+        position: absolute;
+        background: var(--surface);
+        border: 1px solid rgba(255, 255, 255, 0.7);
+        box-shadow: var(--shadow);
+      }
+
+      .hero-card-main {
+        inset: 0 0 70px 70px;
+        border-radius: 36px;
+        overflow: hidden;
+      }
+
+      .hero-card-main img,
+      .listing-image img,
+      .about-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .hero-card-small {
+        left: 0;
+        bottom: 0;
+        width: 235px;
+        border-radius: 26px;
+        overflow: hidden;
+      }
+
+      .hero-card-small .small-copy {
+        padding: 1rem 1rem 1.1rem;
+      }
+
+      .hero-card-small strong,
+      .hero-floating strong {
+        display: block;
+        margin-bottom: 0.15rem;
+      }
+
+      .hero-card-small span,
+      .hero-floating span {
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      .hero-floating {
+        top: 28px;
+        right: 0;
+        width: 230px;
+        border-radius: 22px;
+        padding: 1rem;
+      }
+
+      .hero-floating .pill {
+        display: inline-flex;
+        padding: 0.35rem 0.7rem;
+        border-radius: 999px;
+        background: var(--accent-soft);
+        color: var(--accent);
+        font-size: 0.82rem;
+        font-weight: 600;
+        margin-bottom: 0.7rem;
+      }
+
+      .trust-grid,
+      .steps-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 1.15rem;
+      }
+
+      .trust-card,
+      .step-card {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-lg);
+        padding: 1.4rem;
+        box-shadow: var(--shadow);
+      }
+
+      .icon-wrap,
+      .step-number {
+        width: 52px;
+        height: 52px;
+        border-radius: 16px;
+        display: grid;
+        place-items: center;
+        margin-bottom: 1rem;
+        font-weight: 700;
+      }
+
+      .icon-wrap {
+        background: var(--accent-soft);
+        color: var(--accent);
+      }
+
+      .step-number {
+        background: var(--surface-alt);
+        color: var(--text);
+      }
+
+      .trust-card h3,
+      .step-card h3,
+      .listing-body h3 {
+        margin: 0 0 0.45rem;
+        font-size: 1.15rem;
+        letter-spacing: -0.02em;
+      }
+
+      .trust-card p,
+      .step-card p,
+      .listing-body p,
+      .about-copy p,
+      .cta-box p,
+      .footer-copy p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .listings-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1.35rem;
+      }
+
+      .listing-card {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 26px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+      }
+
+      .listing-image {
+        height: 280px;
+      }
+
+      .listing-body {
+        padding: 1.35rem;
+      }
+
+      .listing-top {
+        display: flex;
+        align-items: start;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-bottom: 0.8rem;
+      }
+
+      .price-tag {
+        white-space: nowrap;
+        padding: 0.45rem 0.7rem;
+        border-radius: 999px;
+        background: var(--surface-alt);
+        font-size: 0.9rem;
+        font-weight: 700;
+      }
+
+      .listing-location {
+        color: var(--muted);
+        font-size: 0.95rem;
+        margin-bottom: 0.8rem;
+      }
+
+      .listing-features {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.55rem;
+        margin: 1rem 0 1.2rem;
+      }
+
+      .feature-pill {
+        padding: 0.5rem 0.7rem;
+        border-radius: 999px;
+        background: #f7f7f8;
+        border: 1px solid #ececec;
+        font-size: 0.86rem;
+        color: #495057;
+      }
+
+      .listing-actions {
+        display: flex;
+        gap: 0.75rem;
+      }
+
+      .listing-actions .btn {
+        flex: 1;
+      }
+
+      .about-wrap {
+        display: grid;
+        grid-template-columns: 0.95fr 1.05fr;
+        gap: 2rem;
+        align-items: center;
+      }
+
+      .about-image {
+        border-radius: 34px;
+        overflow: hidden;
+        min-height: 520px;
+        box-shadow: var(--shadow);
+      }
+
+      .about-points {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem;
+        margin-top: 1.5rem;
+      }
+
+      .about-points .point {
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.75);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-md);
+      }
+
+      .cta-box {
+        background: linear-gradient(135deg, #1f6f5f, #284f77);
+        color: white;
+        border-radius: 34px;
+        padding: 3rem;
+        box-shadow: var(--shadow);
+      }
+
+      .cta-box p {
+        color: rgba(255, 255, 255, 0.82);
+        max-width: 680px;
+      }
+
+      .cta-box h2 {
+        margin: 0 0 0.85rem;
+        font-size: clamp(2rem, 4vw, 3.2rem);
+        line-height: 1.05;
+        letter-spacing: -0.04em;
+      }
+
+      .cta-actions {
+        display: flex;
+        gap: 0.9rem;
+        flex-wrap: wrap;
+        margin-top: 1.6rem;
+      }
+
+      .cta-box .btn-secondary {
+        background: rgba(255, 255, 255, 0.12);
+        border-color: rgba(255, 255, 255, 0.22);
+        color: white;
+      }
+
+      .site-footer {
+        padding: 2.2rem 0 3rem;
+      }
+
+      .footer-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid var(--line);
+      }
+
+      .footer-copy strong {
+        display: block;
+        margin-bottom: 0.3rem;
+      }
+
+      .footer-links {
+        display: flex;
+        gap: 1.2rem;
+        color: var(--muted);
+        flex-wrap: wrap;
+      }
+
+      @media (max-width: 1080px) {
+        .hero-grid,
+        .about-wrap {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-visual {
+          min-height: 560px;
+        }
+
+        .trust-grid,
+        .listings-grid,
+        .steps-grid,
+        .about-points {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 760px) {
+        .nav {
+          flex-wrap: wrap;
+          justify-content: center;
+          padding: 1rem 0;
+        }
+
+        .nav-links {
+          width: 100%;
+          justify-content: center;
+          flex-wrap: wrap;
+          gap: 1rem;
+        }
+
+        .hero {
+          padding-top: 2rem;
+        }
+
+        .hero-copy h1 {
+          max-width: none;
+        }
+
+        .hero-meta,
+        .trust-grid,
+        .listings-grid,
+        .steps-grid,
+        .about-points,
+        .footer-bar {
+          grid-template-columns: 1fr;
+          display: grid;
+        }
+
+        .hero-visual {
+          min-height: auto;
+          display: grid;
+          gap: 1rem;
+        }
+
+        .hero-card-main,
+        .hero-card-small,
+        .hero-floating {
+          position: static;
+          width: 100%;
+        }
+
+        .hero-card-main {
+          min-height: 360px;
+        }
+
+        .listing-image,
+        .about-image {
+          height: 260px;
+          min-height: auto;
+        }
+
+        .cta-box {
+          padding: 2rem 1.4rem;
+        }
+
+        .listing-actions,
+        .hero-actions,
+        .cta-actions {
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav">
+        <a class="brand" href="#home">
+          <span class="brand-mark">SL</span>
+          <span>LOGO</span>
+        </a>
+
+        <nav class="nav-links">
+          <a href="#home">Home</a>
+          <a href="#apartments">Apartments</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+        </nav>
+
+        <a class="btn btn-primary" href="https://wa.me/2348000000000?text=Hello%20StayLuxe%2C%20I%E2%80%99m%20interested%20in%20your%20serviced%20apartments.">Chat on WhatsApp</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="home">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <span class="eyebrow">Luxury serviced stays in Lagos</span>
+            <h1>Premium apartments designed for comfort and ease.</h1>
+            <p>
+              Discover stylish, fully furnished serviced apartments for short stays,
+              work trips, family visits, and weekend escapes — all with a simple WhatsApp inquiry process.
+            </p>
+
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#apartments">Browse Apartments</a>
+              <a class="btn btn-secondary" href="https://wa.me/2348000000000?text=Hello%20StayLuxe%2C%20I%E2%80%99d%20like%20to%20find%20the%20right%20apartment%20for%20my%20stay.">Find the Right Stay</a>
+            </div>
+
+            <div class="hero-meta">
+              <div class="meta-card">
+                <strong>15+</strong>
+                <span>Fully furnished serviced stays</span>
+              </div>
+              <div class="meta-card">
+                <strong>24/7</strong>
+                <span>Guest support and fast responses</span>
+              </div>
+              <div class="meta-card">
+                <strong>Prime</strong>
+                <span>Locations across Lekki, VI, and Ikeja</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-visual">
+            <div class="hero-card-main">
+              <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80" alt="Elegant serviced apartment living room" />
+            </div>
+
+            <div class="hero-card-small">
+              <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=900&q=80" alt="Modern serviced apartment bedroom" />
+              <div class="small-copy">
+                <strong>Short & extended stays</strong>
+                <span>Thoughtfully furnished for comfort and convenience.</span>
+              </div>
+            </div>
+
+            <div class="hero-floating">
+              <span class="pill">Fast inquiries</span>
+              <strong>Book by chat</strong>
+              <span>See the apartment, choose your stay, and continue the conversation on WhatsApp.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+ <!-- <section class="section">
+        <div class="container">
+          <div class="section-head">
+            <span class="eyebrow">How it works</span>
+            <h2>A simple process from browsing to booking conversation.</h2>
+            <p>
+              No complicated checkout flow. Just explore the apartments, choose your preferred stay, and continue the conversation directly on WhatsApp.
+            </p>
+          </div>
+
+          <div class="steps-grid">
+            <article class="step-card">
+              <div class="step-number">1</div>
+              <h3>Browse apartments</h3>
+              <p>Explore the available serviced apartments and compare location, size, and pricing.</p>
+            </article>
+            <article class="step-card">
+              <div class="step-number">2</div>
+              <h3>Choose your stay</h3>
+              <p>Select the apartment that best matches your comfort, trip type, and budget.</p>
+            </article>
+            <article class="step-card">
+              <div class="step-number">3</div>
+              <h3>Chat on WhatsApp</h3>
+              <p>Ask questions, confirm availability, and continue the booking discussion directly.</p>
+            </article>
+            <article class="step-card">
+              <div class="step-number">4</div>
+              <h3>Confirm with ease</h3>
+              <p>Finalize your preferred stay with personal support and a smoother communication flow.</p>
+            </article>
+          </div>
+        </div>
+      </section> -->
+      <!-- <section class="section">
+        <div class="container">
+          <div class="section-head">
+            <span class="eyebrow">Why guests choose us</span>
+            <h2>A refined stay experience from the first click.</h2>
+            <p>
+              From carefully selected locations to responsive guest support, every part of the experience is designed to feel smooth, comfortable, and reliable.
+            </p>
+          </div>
+
+          <div class="trust-grid">
+            <article class="trust-card">
+              <div class="icon-wrap">01</div>
+              <h3>Fully furnished spaces</h3>
+              <p>Move into beautifully styled apartments with everything you need for a relaxed stay.</p>
+            </article>
+
+            <article class="trust-card">
+              <div class="icon-wrap">02</div>
+              <h3>Prime city locations</h3>
+              <p>Stay close to business hubs, dining spots, entertainment, and essential city access.</p>
+            </article>
+
+            <article class="trust-card">
+              <div class="icon-wrap">03</div>
+              <h3>Fast WhatsApp support</h3>
+              <p>Ask questions, confirm details, and continue your booking conversation directly on WhatsApp.</p>
+            </article>
+
+            <article class="trust-card">
+              <div class="icon-wrap">04</div>
+              <h3>Comfort you can trust</h3>
+              <p>Clean, secure, and guest-ready apartments designed for short and extended visits.</p>
+            </article>
+          </div>
+        </div>
+      </section> -->
+
+      <section class="section" id="apartments">
+        <div class="container">
+          <div class="section-head">
+            <span class="eyebrow">Featured apartments</span>
+            <h2>Browse some of our most requested serviced stays.</h2>
+            <p>
+              Explore a curated selection of furnished apartments with stylish interiors, practical amenities, and easy WhatsApp inquiry buttons.
+            </p>
+          </div>
+
+          <div class="listings-grid">
+            <article class="listing-card">
+              <div class="listing-image">
+                <img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=1200&q=80" alt="2 bedroom apartment in Lekki" />
+              </div>
+              <div class="listing-body">
+                <div class="listing-top">
+                  <div>
+                    <h3>2 Bedroom Apartment – Lekki</h3>
+                    <div class="listing-location">Lekki Phase 1, Lagos</div>
+                  </div>
+                  <span class="price-tag">₦180k / night</span>
+                </div>
+                <!-- <p>A bright and elegant apartment with modern interiors, spacious rooms, and easy access to top city spots.</p> -->
+                <div class="listing-features">
+                  <span class="feature-pill">2 Bedrooms</span>
+                  <span class="feature-pill">2 Bathrooms</span>
+                  <span class="feature-pill">WiFi</span>
+                  <span class="feature-pill">Parking</span>
+                </div>
+                <div class="listing-actions">
+                  <a class="btn btn-primary" href="https://wa.me/2348000000000?text=Hi%2C%20I%E2%80%99m%20interested%20in%20the%202%20Bedroom%20Apartment%20in%20Lekki.">WhatsApp Inquiry</a>
+                  <a class="btn btn-secondary" href="#contact">View Details</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="listing-card">
+              <div class="listing-image">
+                <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=1200&q=80" alt="Studio apartment in Ikeja GRA" />
+              </div>
+              <div class="listing-body">
+                <div class="listing-top">
+                  <div>
+                    <h3>Studio Apartment – Ikeja GRA</h3>
+                    <div class="listing-location">Ikeja GRA, Lagos</div>
+                  </div>
+                  <span class="price-tag">₦95k / night</span>
+                </div>
+                <!-- <p>A clean and stylish studio ideal for solo stays, work trips, and guests looking for convenience in a calm location.</p> -->
+                <div class="listing-features">
+                  <span class="feature-pill">Studio</span>
+                  <span class="feature-pill">1 Bathroom</span>
+                  <span class="feature-pill">24/7 Power</span>
+                  <span class="feature-pill">Security</span>
+                </div>
+                <div class="listing-actions">
+                  <a class="btn btn-primary" href="https://wa.me/2348000000000?text=Hi%2C%20I%E2%80%99m%20interested%20in%20the%20Studio%20Apartment%20in%20Ikeja%20GRA.">WhatsApp Inquiry</a>
+                  <a class="btn btn-secondary" href="#contact">View Details</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="listing-card">
+              <div class="listing-image">
+                <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=80" alt="Luxury 3 bedroom apartment in Victoria Island" />
+              </div>
+              <div class="listing-body">
+                <div class="listing-top">
+                  <div>
+                    <h3>3 Bedroom Luxury Apartment – Victoria Island</h3>
+                    <div class="listing-location">Victoria Island, Lagos</div>
+                  </div>
+                  <span class="price-tag">₦250k / night</span>
+                </div>
+                <!-- <p>A premium stay for guests who want extra space, refined finishes, and a luxurious city-living experience.</p> -->
+                <div class="listing-features">
+                  <span class="feature-pill">3 Bedrooms</span>
+                  <span class="feature-pill">3 Bathrooms</span>
+                  <span class="feature-pill">Pool Access</span>
+                  <span class="feature-pill">Concierge</span>
+                </div>
+                <div class="listing-actions">
+                  <a class="btn btn-primary" href="https://wa.me/2348000000000?text=Hi%2C%20I%E2%80%99m%20interested%20in%20the%203%20Bedroom%20Luxury%20Apartment%20in%20Victoria%20Island.">WhatsApp Inquiry</a>
+                  <a class="btn btn-secondary" href="#contact">View Details</a>
+                </div>
+              </div>
+            </article>
+            <article class="listing-card">
+              <div class="listing-image">
+                <img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=1200&q=80" alt="2 bedroom apartment in Lekki" />
+              </div>
+              <div class="listing-body">
+                <div class="listing-top">
+                  <div>
+                    <h3>2 Bedroom Apartment – Lekki</h3>
+                    <div class="listing-location">Lekki Phase 1, Lagos</div>
+                  </div>
+                  <span class="price-tag">₦180k / night</span>
+                </div>
+                <!-- <p>A bright and elegant apartment with modern interiors, spacious rooms, and easy access to top city spots.</p> -->
+                <div class="listing-features">
+                  <span class="feature-pill">2 Bedrooms</span>
+                  <span class="feature-pill">2 Bathrooms</span>
+                  <span class="feature-pill">WiFi</span>
+                  <span class="feature-pill">Parking</span>
+                </div>
+                <div class="listing-actions">
+                  <a class="btn btn-primary" href="https://wa.me/2348000000000?text=Hi%2C%20I%E2%80%99m%20interested%20in%20the%202%20Bedroom%20Apartment%20in%20Lekki.">WhatsApp Inquiry</a>
+                  <a class="btn btn-secondary" href="#contact">View Details</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="listing-card">
+              <div class="listing-image">
+                <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=1200&q=80" alt="Studio apartment in Ikeja GRA" />
+              </div>
+              <div class="listing-body">
+                <div class="listing-top">
+                  <div>
+                    <h3>Studio Apartment – Ikeja GRA</h3>
+                    <div class="listing-location">Ikeja GRA, Lagos</div>
+                  </div>
+                  <span class="price-tag">₦95k / night</span>
+                </div>
+                <!-- <p>A clean and stylish studio ideal for solo stays, work trips, and guests looking for convenience in a calm location.</p> -->
+                <div class="listing-features">
+                  <span class="feature-pill">Studio</span>
+                  <span class="feature-pill">1 Bathroom</span>
+                  <span class="feature-pill">24/7 Power</span>
+                  <span class="feature-pill">Security</span>
+                </div>
+                <div class="listing-actions">
+                  <a class="btn btn-primary" href="https://wa.me/2348000000000?text=Hi%2C%20I%E2%80%99m%20interested%20in%20the%20Studio%20Apartment%20in%20Ikeja%20GRA.">WhatsApp Inquiry</a>
+                  <a class="btn btn-secondary" href="#contact">View Details</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="listing-card">
+              <div class="listing-image">
+                <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=80" alt="Luxury 3 bedroom apartment in Victoria Island" />
+              </div>
+              <div class="listing-body">
+                <div class="listing-top">
+                  <div>
+                    <h3>3 Bedroom Luxury Apartment – Victoria Island</h3>
+                    <div class="listing-location">Victoria Island, Lagos</div>
+                  </div>
+                  <span class="price-tag">₦250k / night</span>
+                </div>
+                <!-- <p>A premium stay for guests who want extra space, refined finishes, and a luxurious city-living experience.</p> -->
+                <div class="listing-features">
+                  <span class="feature-pill">3 Bedrooms</span>
+                  <span class="feature-pill">3 Bathrooms</span>
+                  <span class="feature-pill">Pool Access</span>
+                  <span class="feature-pill">Concierge</span>
+                </div>
+                <div class="listing-actions">
+                  <a class="btn btn-primary" href="https://wa.me/2348000000000?text=Hi%2C%20I%E2%80%99m%20interested%20in%20the%203%20Bedroom%20Luxury%20Apartment%20in%20Victoria%20Island.">WhatsApp Inquiry</a>
+                  <a class="btn btn-secondary" href="#contact">View Details</a>
+                </div>
+              </div>
+            </article>
+            <article class="listing-card">
+              <div class="listing-image">
+                <img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=1200&q=80" alt="2 bedroom apartment in Lekki" />
+              </div>
+              <div class="listing-body">
+                <div class="listing-top">
+                  <div>
+                    <h3>2 Bedroom Apartment – Lekki</h3>
+                    <div class="listing-location">Lekki Phase 1, Lagos</div>
+                  </div>
+                  <span class="price-tag">₦180k / night</span>
+                </div>
+                <!-- <p>A bright and elegant apartment with modern interiors, spacious rooms, and easy access to top city spots.</p> -->
+                <div class="listing-features">
+                  <span class="feature-pill">2 Bedrooms</span>
+                  <span class="feature-pill">2 Bathrooms</span>
+                  <span class="feature-pill">WiFi</span>
+                  <span class="feature-pill">Parking</span>
+                </div>
+                <div class="listing-actions">
+                  <a class="btn btn-primary" href="https://wa.me/2348000000000?text=Hi%2C%20I%E2%80%99m%20interested%20in%20the%202%20Bedroom%20Apartment%20in%20Lekki.">WhatsApp Inquiry</a>
+                  <a class="btn btn-secondary" href="#contact">View Details</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="listing-card">
+              <div class="listing-image">
+                <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=1200&q=80" alt="Studio apartment in Ikeja GRA" />
+              </div>
+              <div class="listing-body">
+                <div class="listing-top">
+                  <div>
+                    <h3>Studio Apartment – Ikeja GRA</h3>
+                    <div class="listing-location">Ikeja GRA, Lagos</div>
+                  </div>
+                  <span class="price-tag">₦95k / night</span>
+                </div>
+                <!-- <p>A clean and stylish studio ideal for solo stays, work trips, and guests looking for convenience in a calm location.</p> -->
+                <div class="listing-features">
+                  <span class="feature-pill">Studio</span>
+                  <span class="feature-pill">1 Bathroom</span>
+                  <span class="feature-pill">24/7 Power</span>
+                  <span class="feature-pill">Security</span>
+                </div>
+                <div class="listing-actions">
+                  <a class="btn btn-primary" href="https://wa.me/2348000000000?text=Hi%2C%20I%E2%80%99m%20interested%20in%20the%20Studio%20Apartment%20in%20Ikeja%20GRA.">WhatsApp Inquiry</a>
+                  <a class="btn btn-secondary" href="#contact">View Details</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="listing-card">
+              <div class="listing-image">
+                <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=80" alt="Luxury 3 bedroom apartment in Victoria Island" />
+              </div>
+              <div class="listing-body">
+                <div class="listing-top">
+                  <div>
+                    <h3>3 Bedroom Luxury Apartment – Victoria Island</h3>
+                    <div class="listing-location">Victoria Island, Lagos</div>
+                  </div>
+                  <span class="price-tag">₦250k / night</span>
+                </div>
+                <!-- <p>A premium stay for guests who want extra space, refined finishes, and a luxurious city-living experience.</p> -->
+                <div class="listing-features">
+                  <span class="feature-pill">3 Bedrooms</span>
+                  <span class="feature-pill">3 Bathrooms</span>
+                  <span class="feature-pill">Pool Access</span>
+                  <span class="feature-pill">Concierge</span>
+                </div>
+                <div class="listing-actions">
+                  <a class="btn btn-primary" href="https://wa.me/2348000000000?text=Hi%2C%20I%E2%80%99m%20interested%20in%20the%203%20Bedroom%20Luxury%20Apartment%20in%20Victoria%20Island.">WhatsApp Inquiry</a>
+                  <a class="btn btn-secondary" href="#contact">View Details</a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="about">
+        <div class="container about-wrap">
+          <div class="about-image">
+            <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80" alt="Premium serviced apartment interior" />
+          </div>
+
+          <div class="about-copy">
+            <span class="eyebrow">About the experience</span>
+            <div class="section-head">
+              <h2>Thoughtfully curated stays for business, family, and leisure.</h2>
+              <p>
+                StayLuxe Apartments offers furnished serviced apartments designed for travelers and residents who want comfort, convenience, and a polished home-away-from-home experience.
+              </p>
+            </div>
+            <p>
+              Whether you are visiting Lagos for a few days, relocating temporarily, planning a family stay, or booking a comfortable base for work, our apartments are selected to make every stay feel easier and more enjoyable.
+            </p>
+
+            <div class="about-points">
+              <div class="point">
+                <strong>Comfort-first interiors</strong>
+                <p>Warm, modern spaces that feel inviting from the moment you arrive.</p>
+              </div>
+              <div class="point">
+                <strong>Flexible stay options</strong>
+                <p>Suitable for weekend stays, extended visits, and work-related travel.</p>
+              </div>
+              <div class="point">
+                <strong>Reliable communication</strong>
+                <p>Direct WhatsApp support for questions, availability, and coordination.</p>
+              </div>
+              <div class="point">
+                <strong>Guest-focused service</strong>
+                <p>Practical amenities and responsive support built around guest convenience.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- <section class="section" id="contact">
+        <div class="container">
+          <div class="cta-box">
+            <span class="eyebrow" style="background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.18); color: rgba(255,255,255,0.85);">Ready to inquire?</span>
+            <h2>Need help finding the right serviced apartment?</h2>
+            <p>
+              Chat with us on WhatsApp and let us help you choose the perfect stay based on your location preference, trip type, and budget.
+            </p>
+            <div class="cta-actions">
+              <a class="btn btn-primary" href="https://wa.me/2348000000000?text=Hello%20StayLuxe%2C%20I%E2%80%99d%20like%20help%20finding%20the%20right%20apartment.">Chat on WhatsApp</a>
+              <a class="btn btn-secondary" href="#apartments">Browse Listings</a>
+            </div>
+          </div>
+        </div>
+      </section> -->
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-bar">
+        <div class="footer-copy">
+          <strong>StayLuxe Apartments</strong>
+          <p>Premium serviced apartments in Lagos for short and extended stays.</p>
+        </div>
+
+        <div class="footer-links">
+          <span>+234 800 000 0000</span>
+          <span>Lekki • Victoria Island • Ikeja</span>
+          <span>© 2026 StayLuxe Apartments</span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
