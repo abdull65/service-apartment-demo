@@ -86,7 +86,13 @@
         color: var(--muted);
         font-size: 1.05rem;
       }
-
+.menu-toggle {
+  display: none;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
       .site-header {
         position: sticky;
         top: 0;
@@ -531,7 +537,7 @@
       @media (max-width: 760px) {
         .nav {
           flex-wrap: wrap;
-          justify-content: center;
+          justify-content: space-between;
           padding: 1rem 0;
         }
 
@@ -541,6 +547,37 @@
           flex-wrap: wrap;
           gap: 1rem;
         }
+
+                    .menu-toggle {
+                display: block;
+            }
+
+            .desktop-btn {
+                display: none;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+                padding: 1.5rem;
+                display: none;
+                border-top: 1px solid #eee;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+  .mobile-btn {
+    display: inline-flex;
+    margin-top: 0.5rem;
+  }
 
         .hero {
           padding-top: 2rem;
@@ -593,26 +630,45 @@
           flex-direction: column;
         }
       }
+      /* Desktop */
+.mobile-btn {
+  display: none;
+}
     </style>
   </head>
   <body>
-    <header class="site-header">
-      <div class="container nav">
-        <a class="brand" href="#home">
-          <span class="brand-mark">SL</span>
-          <span>LOGO</span>
-        </a>
+<header class="site-header">
+  <div class="container nav">
+    
+    <a class="brand" href="#home">
+      <span class="brand-mark">SL</span>
+      <span>LOGO</span>
+    </a>
 
-        <nav class="nav-links">
-          <a href="#home">Home</a>
-          <a href="#apartments">Apartments</a>
-          <a href="#about">About</a>
-          <a href="#contact">Contact</a>
-        </nav>
+    <!-- Menu button -->
+    <button class="menu-toggle" onclick="toggleMenu()">
+      ☰
+    </button>
 
-        <a class="btn btn-primary" href="https://wa.me/2348000000000?text=Hello%20StayLuxe%2C%20I%E2%80%99m%20interested%20in%20your%20serviced%20apartments.">Chat on WhatsApp</a>
-      </div>
-    </header>
+    <nav class="nav-links" id="navLinks">
+      <a href="#home">Home</a>
+      <a href="#apartments">Apartments</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a class="btn btn-primary mobile-btn"
+         href="https://wa.me/2348000000000?text=Hello">
+         Chat on WhatsApp
+      </a>
+    </nav>
+
+    <!-- Desktop button -->
+    <a class="btn btn-primary desktop-btn"
+       href="https://wa.me/2348000000000?text=Hello">
+       Chat on WhatsApp
+    </a>
+
+  </div>
+</header>
 
     <main>
       <section class="hero" id="home">
@@ -1056,5 +1112,10 @@
         </div>
       </div>
     </footer>
+    <script>
+  function toggleMenu() {
+    document.getElementById("navLinks").classList.toggle("active");
+  }
+</script>
   </body>
 </html>
